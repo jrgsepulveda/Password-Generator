@@ -16,15 +16,16 @@
     
         //The arrays 
         var alpha = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
-        var alphaNumeric = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","1","2","3","4","5","6","7","8","9"];
-        var alphaNumericUpAlpha = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
-        var alphaNumericUpAlphaCharacter = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","!","@","#","$","%","^","&","*","(",")"];
+        var numeric = ["1","2","3","4","5","6","7","8","9"];
+        var upAlpha = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+        var character = ["!","@","#","$","%","^","&","*","(",")"];
         
         //Random algorithm for the arrays
         var randomAlpha = Math.floor(Math.random() * alpha.length);
-        var randomAlphaNumeric = Math.floor(Math.random() * alphaNumeric.length);
-        var randomAlphaNumericUpAlpha = Math.floor(Math.random() * alphaNumericUpAlpha.length);
-        var randomAlphaNumericUpAlphaCharacter = Math.floor(Math.random() * alphaNumericUpAlphaCharacter.length);
+        //var randomAlphaNumeric = Math.floor(Math.random() * alphaNumeric.length);
+        var randomNumeric = Math.floor(Math.random()* numeric.length);
+        var randomUpAlpha = Math.floor(Math.random() * upAlpha.length);
+        var randomCharacter = Math.floor(Math.random() * character.length);
         
         //On screen prompts
         var pwLength = prompt("How long of a password do you need?");
@@ -34,29 +35,82 @@
         
         //Ouput to user
         var output = ""; 
+        var output2 = ""; 
 
-
-        if(alphaNumericConfirm ===true){
-            for(i=0; i < pwLength; i++){
-            randomAlphaNumeric = Math.floor(Math.random() * alphaNumeric.length);
+        //Just alphaNumeric
+        if(alphaNumericConfirm === true && alphaNumericUpAlphaConfirm === false && alphaNumericUpAlphaCharacterConfirm === false){
+            for(i=0; i < pwLength - 1; i++){
+               randomAlpha = Math.floor(Math.random() * alpha.length);
            
-            output += alphaNumeric[randomAlphaNumeric];
+               output += alpha[randomAlpha];
             }
+            randomNumeric = Math.floor(Math.random()* numeric.length);
+            output2 = numeric[randomNumeric];
          }
-         else if (alphaNumericUpAlphaConfirm === true){
-            for(i=0; i < pwLength; i++){
-            randomAlphaNumericUpAlpha = Math.floor(Math.random() * alphaNumericUpAlpha.length);
+         //alpha and upAlpha
+         else if (alphaNumericUpAlphaConfirm === true && alphaNumericConfirm === false && alphaNumericUpAlphaCharacterConfirm === false){
+            for(i=0; i < pwLength - 1; i++){
+               randomAlpha = Math.floor(Math.random() * alpha.length);
            
-            output += alphaNumericUpAlpha[randomAlphaNumericUpAlpha];
+               output += alpha[randomAlpha];
             }
+            randomUpAlpha = Math.floor(Math.random() * upAlpha.length);
+            output2 = upAlpha[randomUpAlpha];
          }
-         else if (alphaNumericUpAlphaCharacterConfirm === true){
-            for(i=0; i < pwLength; i++){
-            randomAlphaNumericUpAlphaCharacter = Math.floor(Math.random() * alphaNumericUpAlphaCharacter.length);
+         //alpha and special characters
+         else if (alphaNumericUpAlphaCharacterConfirm === true && alphaNumericConfirm === false && alphaNumericUpAlphaConfirm === false){
+            for(i=0; i < pwLength - 1; i++){
+               randomAlpha = Math.floor(Math.random() * alpha.length);
            
-            output += alphaNumericUpAlphaCharacter[randomAlphaNumericUpAlphaCharacter];
+               output += alpha[randomAlpha];
             }
-         }else{
+            randomCharacter = Math.floor(Math.random() * character.length);
+            output2 = character[randomCharacter];
+         }
+         //alpha, upAlpha and numeric
+         else if (alphaNumericUpAlphaConfirm && alphaNumericConfirm === true && alphaNumericUpAlphaCharacterConfirm === false){
+            for(i=0; i < pwLength - 2; i++){
+               randomAlpha = Math.floor(Math.random() * alpha.length);
+           
+               output += alpha[randomAlpha];
+            }
+            randomNumeric = Math.floor(Math.random()* numeric.length);
+            randomUpAlpha = Math.floor(Math.random() * upAlpha.length);
+            output2 = upAlpha[randomUpAlpha] + numeric[randomNumeric];
+         }
+         //alpha, upAlpha and special characters
+         else if (alphaNumericUpAlphaConfirm && alphaNumericUpAlphaCharacterConfirm === true && alphaNumericConfirm === false){
+            for(i=0; i < pwLength - 2; i++){
+               randomAlpha = Math.floor(Math.random() * alpha.length);
+           
+               output += alpha[randomAlpha];
+            }
+            randomCharacter = Math.floor(Math.random() * character.length);
+            randomUpAlpha = Math.floor(Math.random() * upAlpha.length);
+            output2 = upAlpha[randomUpAlpha] + character[randomCharacter];
+         }
+         else if (alphaNumericConfirm && alphaNumericUpAlphaCharacterConfirm === true && alphaNumericUpAlphaConfirm === false){ 
+            for(i=0; i < pwLength - 2; i++){
+               randomAlpha = Math.floor(Math.random() * alpha.length);
+           
+               output += alpha[randomAlpha];
+            }
+            randomCharacter = Math.floor(Math.random() * character.length);
+            randomNumeric = Math.floor(Math.random()* numeric.length);
+            output2 = numeric[randomNumeric] + character[randomCharacter];
+         }
+         else if (alphaNumericUpAlphaCharacterConfirm === true && alphaNumericConfirm === true && alphaNumericUpAlphaConfirm === true){
+            for(i=0; i < pwLength - 3; i++){
+               randomAlpha = Math.floor(Math.random() * alpha.length);
+           
+               output += alpha[randomAlpha];
+            }
+            randomNumeric = Math.floor(Math.random()* numeric.length);
+            randomUpAlpha = Math.floor(Math.random() * upAlpha.length);
+            randomCharacter = Math.floor(Math.random() * character.length);
+            output2 = numeric[randomNumeric] + upAlpha[randomUpAlpha] + character[randomCharacter];
+         }
+         else{
             for(i=0; i < pwLength; i++){ 
             randomAlpha = Math.floor(Math.random() * alpha.length);
            
@@ -64,7 +118,7 @@
             }
          }
             
-          alert("Here is your PW: " + output)
+          alert("Here is your PW: " + output + output2)
 
 
     </script>
