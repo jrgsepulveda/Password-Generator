@@ -1,131 +1,63 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-
-    <title>Password Generator!</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Password Generator</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>Password Generator!</h1>
-    <script>
-    
-        //The arrays 
-        var alpha = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
-        var numeric = ["1","2","3","4","5","6","7","8","9"];
-        var upAlpha = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
-        var character = ["!","@","#","$","%","^","&","*","(",")"];
-        
-        //Random algorithm for the arrays
-        var randomAlpha = Math.floor(Math.random() * alpha.length);
-        var randomNumeric = Math.floor(Math.random()* numeric.length);
-        var randomUpAlpha = Math.floor(Math.random() * upAlpha.length);
-        var randomCharacter = Math.floor(Math.random() * character.length);
-        
-        //On screen prompts
-        var pwLength = prompt("How long of a password do you need?");
-        var alphaNumericConfirm = confirm("would you like numbers in your password?");
-        var alphaNumericUpAlphaConfirm = confirm("Would you like upper case letters in your password?")
-        var alphaNumericUpAlphaCharacterConfirm = confirm("Would you like special chatacters in your password?")
-        
-        //Ouput to user
-        var output = ""; 
-        var output2 = ""; 
-
-        //Just alphaNumeric
-        if(alphaNumericConfirm === true && alphaNumericUpAlphaConfirm === false && alphaNumericUpAlphaCharacterConfirm === false){
-            for(i=0; i < pwLength - 1; i++){
-               randomAlpha = Math.floor(Math.random() * alpha.length);
-           
-               output += alpha[randomAlpha];
-            }
-            randomNumeric = Math.floor(Math.random()* numeric.length);
-            output2 = numeric[randomNumeric];
-         }
-         //alpha and upAlpha
-         else if (alphaNumericUpAlphaConfirm === true && alphaNumericConfirm === false && alphaNumericUpAlphaCharacterConfirm === false){
-            for(i=0; i < pwLength - 1; i++){
-               randomAlpha = Math.floor(Math.random() * alpha.length);
-           
-               output += alpha[randomAlpha];
-            }
-            randomUpAlpha = Math.floor(Math.random() * upAlpha.length);
-            output2 = upAlpha[randomUpAlpha];
-         }
-         //alpha and special characters
-         else if (alphaNumericUpAlphaCharacterConfirm === true && alphaNumericConfirm === false && alphaNumericUpAlphaConfirm === false){
-            for(i=0; i < pwLength - 1; i++){
-               randomAlpha = Math.floor(Math.random() * alpha.length);
-           
-               output += alpha[randomAlpha];
-            }
-            randomCharacter = Math.floor(Math.random() * character.length);
-            output2 = character[randomCharacter];
-         }
-         //alpha, upAlpha and numeric
-         else if (alphaNumericUpAlphaConfirm && alphaNumericConfirm === true && alphaNumericUpAlphaCharacterConfirm === false){
-            for(i=0; i < pwLength - 2; i++){
-               randomAlpha = Math.floor(Math.random() * alpha.length);
-           
-               output += alpha[randomAlpha];
-            }
-            randomNumeric = Math.floor(Math.random()* numeric.length);
-            randomUpAlpha = Math.floor(Math.random() * upAlpha.length);
-            output2 = upAlpha[randomUpAlpha] + numeric[randomNumeric];
-         }
-         //alpha, upAlpha and special characters
-         else if (alphaNumericUpAlphaConfirm && alphaNumericUpAlphaCharacterConfirm === true && alphaNumericConfirm === false){
-            for(i=0; i < pwLength - 2; i++){
-               randomAlpha = Math.floor(Math.random() * alpha.length);
-           
-               output += alpha[randomAlpha];
-            }
-            randomCharacter = Math.floor(Math.random() * character.length);
-            randomUpAlpha = Math.floor(Math.random() * upAlpha.length);
-            output2 = upAlpha[randomUpAlpha] + character[randomCharacter];
-         }
-         else if (alphaNumericConfirm && alphaNumericUpAlphaCharacterConfirm === true && alphaNumericUpAlphaConfirm === false){ 
-            for(i=0; i < pwLength - 2; i++){
-               randomAlpha = Math.floor(Math.random() * alpha.length);
-           
-               output += alpha[randomAlpha];
-            }
-            randomCharacter = Math.floor(Math.random() * character.length);
-            randomNumeric = Math.floor(Math.random()* numeric.length);
-            output2 = numeric[randomNumeric] + character[randomCharacter];
-         }
-         else if (alphaNumericUpAlphaCharacterConfirm === true && alphaNumericConfirm === true && alphaNumericUpAlphaConfirm === true){
-            for(i=0; i < pwLength - 3; i++){
-               randomAlpha = Math.floor(Math.random() * alpha.length);
-           
-               output += alpha[randomAlpha];
-            }
-            randomNumeric = Math.floor(Math.random()* numeric.length);
-            randomUpAlpha = Math.floor(Math.random() * upAlpha.length);
-            randomCharacter = Math.floor(Math.random() * character.length);
-            output2 = numeric[randomNumeric] + upAlpha[randomUpAlpha] + character[randomCharacter];
-         }
-         else{
-            for(i=0; i < pwLength; i++){ 
-            randomAlpha = Math.floor(Math.random() * alpha.length);
-           
-            output += alpha[randomAlpha];
-            }
-         }
-            
-          alert("Here is your PW: " + output + output2)
-
-
-    </script>
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <div class="wrapper">
+      <header>
+        <h1>Password Generator</h1>
+      </header>
+      <div class="container card">
+        <div class="card-header">
+          <h2>Generate a Password</h2>
+        </div>
+        <div class="card-body">
+          <textarea
+            readonly
+            id="password"
+            placeholder="Your Secure Password"
+            aria-label="Generated Password"
+          ></textarea>
+          <div class="textbox">
+            <label for="length">Password Length (8-128)</label>
+            <input type="number" id="input">
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="alphaCheck">
+            <label class="form-check-label" for="defaultCheck1">
+              Lower Case Letters
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="upAlphaCheck">
+            <label class="form-check-label" for="defaultCheck1">
+              Upper Case Letters
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="numbersCheck">
+            <label class="form-check-label" for="defaultCheck1">
+              Numbers
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="characterCheck">
+            <label class="form-check-label" for="defaultCheck1">
+              Special Characters
+            </label>
+          </div>
+          
+        </div>
+        <div class="card-footer">
+          <button id="generate" class="btn">Generate Password</button>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
   </body>
 </html>
