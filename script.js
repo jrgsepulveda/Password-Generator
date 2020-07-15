@@ -166,14 +166,7 @@ function singleCheckFun(){
   }
   
 }
-function doubleCheckFun(){
-  var alphaCheck = document.getElementById("alphaCheck");
-  var upAlphaCheck = document.getElementById("upAlphaCheck");
-  var numbersCheck = document.getElementById("numbersCheck");
-  var characterCheck = document.getElementById("characterCheck");
-  
-  
-}
+
 
 
 
