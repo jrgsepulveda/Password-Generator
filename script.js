@@ -17,7 +17,7 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
   
   passwordText.value = password;
- 
+ output = ""
 }
 
 function generatePassword(){
@@ -40,6 +40,7 @@ function generatePassword(){
     }
     return output;
   }
+  
 }
  
 //Random Element Fuctions
