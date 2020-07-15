@@ -17,7 +17,8 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
   
   passwordText.value = password;
- output = ""
+  //Reset PW Generator
+  output = ""
 }
 
 function generatePassword(){
