@@ -23,7 +23,7 @@ function writePassword() {
 
 function generatePassword(){
   if(input.value.length === 0){
-      alert("Please enter a numeric value for for password length")
+      alert("Please enter a numeric value for password length")
       location.reload();
   }
   else if(input.value < 8){
